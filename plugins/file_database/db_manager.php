@@ -14,6 +14,8 @@
  *
  */
 
+if(!defined('WP_TS')) die('Invalid Access');
+
 respond('POST','/file_database/db_manager', 'file_database_db_manager');
 
 function file_database_db_manager(TsRequest $request, TsResponse $response)

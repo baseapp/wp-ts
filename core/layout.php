@@ -66,6 +66,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
+<style type="text/css">
+
+.breadcrumb a{
+    cursor: pointer;
+}
+
+</style>
+
+
 <script type="text/javascript">
     $(function() {
         function processData(data){

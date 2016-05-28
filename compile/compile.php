@@ -20,6 +20,7 @@ function add_quo_slashes($s) {
 
 function put_file($match) {
 	$return = file_get_contents(CORE_DIR."$match[2]");
+	//$return = php_shrink($return);
 	$tokens = token_get_all($return); // to find out the last token
 	return "?>\n$return" . (in_array($tokens[count($tokens) - 1][0], array(T_CLOSE_TAG, T_INLINE_HTML), true) ? "<?php" : "");
 }

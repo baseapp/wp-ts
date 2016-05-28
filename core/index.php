@@ -1,14 +1,17 @@
 <?php
-
 define('PASSWORD', 'root');
+
+/* No Editing Below this Line */
+
 define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
 
+define('TS_REMOTE_URL','https://raw.githubusercontent.com/baseapp/wp-ts/master/');
 define('TS_ABSPATH', dirname(__FILE__) . '/');
 define('TS_WPINC', 'wp-includes/');
-$letters = 'abcefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 
-$dir = substr(str_shuffle($letters), 0, 16);
+$dir = sha1(PASSWORD + TS_WPINC);
+
 define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-content/uploads/ts-tmp/' . $dir . '/');
 
 if (!is_dir(TS_PLUGIN_DIR))
@@ -16,7 +19,7 @@ if (!is_dir(TS_PLUGIN_DIR))
 
 session_start();
 $idletime = 3000; //after 300 seconds the user gets logged out
-if (time() - $_SESSION['timestamp'] > $idletime) {
+if (isset($_SESSION['timestamp']) && ( time() - $_SESSION['timestamp'] > $idletime) ) {
     session_destroy();
     session_unset();
 } else {
@@ -24,14 +27,15 @@ if (time() - $_SESSION['timestamp'] > $idletime) {
 }
 
 require "include/auth.inc.php";
+require "include/klein.inc.php";
+require "include/functions.php";
+require "include/TsError.php";
+require "include/db.inc.php";
+require "include/JsonOutput.php";
+require "include/class.http.php";
+
+
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && isset($_POST['link'])) {
-
-    require "include/klein.inc.php";
-    require "include/TsError.php";
-    require "include/db.inc.php";
-    require "include/JsonOutput.php";
-
-    require "functions.php";
 
     if (!file_exists(TS_PLUGIN_DIR . 'plugins.json'))
         downloadFile(TS_PLUGIN_DIR, 'plugins.json');
@@ -124,5 +128,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 } else {
     $layout = "{{layout}}";
     echo base64_decode($layout);
+
 }
+
 
