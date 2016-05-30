@@ -10,7 +10,7 @@
  * Meta Info
  * FILE_NAME: db_manager.php
  * LABEL: Database Manager
- * LINK_MAIN: /file_database/db_manager
+ * LINK_MAIN: /file_database/file_manager
  *
  */
 

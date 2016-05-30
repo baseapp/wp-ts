@@ -45,6 +45,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
     global $options;
     $options = json_decode($options_file, true);
 
+    var_dump($options);
+
     respond(function (TsRequest $request, TsResponse $response, TsApp $app) {
         $response->onError(function ($response, $err_msg) {
             $response->flash($err_msg, 'danger');
