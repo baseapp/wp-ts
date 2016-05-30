@@ -8,7 +8,7 @@
 
 /**
  * Meta Info
- * FILE_NAME: db_manager.php
+ * FILE_NAME: file_manager.php
  * LABEL: Database Manager
  * LINK_MAIN: /file_database/file_manager
  *

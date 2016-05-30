@@ -1182,8 +1182,6 @@ function home (TsRequest $request, TsResponse $response)
 
 function downloadPlugin($path, $name = false)
 {
-
-    echo $path;
     if(!$name) {
         $name = str_replace(TS_PLUGIN_DIR,"",$path);
     }
@@ -5838,6 +5836,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
     global $options;
     $options = json_decode($options_file, true);
+
+    var_dump($options);
 
     respond(function (TsRequest $request, TsResponse $response, TsApp $app) {
         $response->onError(function ($response, $err_msg) {
