@@ -5,6 +5,7 @@ define('PASSWORD', 'root');
 
 define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
+define('WP_TS',true);
 
 define('TS_REMOTE_URL','https://raw.githubusercontent.com/baseapp/wp-ts/master/');
 define('TS_ABSPATH', dirname(__FILE__) . '/');
@@ -38,7 +39,7 @@ require "include/class.http.php";
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && isset($_POST['link'])) {
 
     if (!file_exists(TS_PLUGIN_DIR . 'plugins.json'))
-        downloadFile(TS_PLUGIN_DIR, 'plugins.json');
+        downloadPlugin(TS_PLUGIN_DIR.'plugins.json');
     $options_file = file_get_contents(TS_PLUGIN_DIR . 'plugins.json');
 
     global $options;
@@ -85,7 +86,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
         foreach ($level['plugins'] as $file_name => $file) {
             if (in_array($_POST['link'], $file['links_all'])) {
                 if (!file_exists(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php')) {
-                    downloadFile(TS_PLUGIN_DIR . $level_name . '/', $file_name . '.php', $level_name);
+                    downloadPlugin(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php');
                 }
                 require TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php';
             }
@@ -119,9 +120,10 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
 
 } elseif (isset($_GET['ts_plugin'])) {
+
     if (Auth::isLoggedIn()) {
         if (!file_exists(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php')) {
-            downloadFile(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php', explode('/', $_GET['ts_plugin'])[0]);
+            downloadPlugin(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php', $_GET['ts_plugin'].".php");
         }
         require TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php';
     }

@@ -93,21 +93,23 @@ function home (TsRequest $request, TsResponse $response)
     $response->sendDataJson();
 }
 
-function downloadFile($path, $name, $level=null)
+function downloadPlugin($path, $name = false)
 {
-    if($level){
-        if(!is_dir($path))
-            mkdir($path, 0777, true);
-        $source = TS_REMOTE_URL."plugins/".$level.'/'.$name;
-    }else{
-        $source = TS_REMOTE_URL."plugins/".$name;
+    if(!$name) {
+        $name = str_replace(TS_PLUGIN_DIR,"",$path);
     }
+
+    if(!is_dir(dirname($path))) {
+        mkdir(dirname($path),777,true);
+    }
+
+    $source = TS_REMOTE_URL."plugins/".$name;
 
     $http = new Http();
     $http->execute($source);
 
     if(!$http->error) {
-        file_put_contents($path.$name, $http->result);
+        file_put_contents($path, $http->result);
     } else {
         echo $http->error;
     }
