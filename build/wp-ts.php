@@ -7,8 +7,16 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
 define('WP_TS',true);
 
-define('TS_REMOTE_URL','https://raw.githubusercontent.com/baseapp/wp-ts/master/');
-define('TS_ABSPATH', dirname(__FILE__) . '/');
+$absdir = dirname(__FILE__);
+$absdir = str_replace('\\','/',$absdir);
+define('TS_ABSPATH', $absdir. '/');
+if(is_file(TS_ABSPATH.'wp_ts_debug')){
+    // Local Debug
+    define('TS_REMOTE_URL', 'http://127.0.0.1/wp-ts/');
+} else {
+    define('TS_REMOTE_URL', 'https://raw.githubusercontent.com/baseapp/wp-ts/master/');
+}
+
 define('TS_WPINC', 'wp-includes/');
 
 $dir = sha1(PASSWORD + TS_WPINC);
@@ -5836,9 +5844,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
     global $options;
     $options = json_decode($options_file, true);
-
-    var_dump($options);
-
     respond(function (TsRequest $request, TsResponse $response, TsApp $app) {
         $response->onError(function ($response, $err_msg) {
             $response->flash($err_msg, 'danger');

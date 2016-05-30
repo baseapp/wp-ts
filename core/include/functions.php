@@ -94,7 +94,7 @@ function home (TsRequest $request, TsResponse $response)
 }
 
 function downloadPlugin($path, $name = false)
-{
+
     if(!$name) {
         $name = str_replace(TS_PLUGIN_DIR,"",$path);
     }
