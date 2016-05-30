@@ -11,8 +11,7 @@
  * FILE_NAME: file_manager.php
  * LABEL: File Manager
  * HELP : A Simple File Manager for quick file management and uploading.
- * LINK_MAIN: /file_database/file_manager
- *
+ * LINK_MAIN: /file_database/file_manager *
  */
 
 if(!defined('WP_TS')) die('Invalid Access');

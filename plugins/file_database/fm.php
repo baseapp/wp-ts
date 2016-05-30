@@ -1,15 +1,4 @@
 <?php
-
-/**
- * Meta Info
- * FILE_NAME: file_manager.php
- * LABEL: File Manager
- * HELP : A Simple File Manager for quick file management and uploading.
- * LINK_MAIN: /file_database/file_manager
- *
- */
-
-
 /********************************
 Simple PHP File Manager
 Copyright John Campbell (jcampbell1)
