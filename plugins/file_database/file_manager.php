@@ -18,7 +18,7 @@ if(!defined('WP_TS')) die('Invalid Access');
 
 respond('POST','/file_database/file_manager', 'file_database_file_manager');
 
-function file_database_db_manager(TsRequest $request, TsResponse $response)
+function file_database_file_manager(TsRequest $request, TsResponse $response)
 {
     $out = "<form method='post' action='".$_SERVER["PHP_SELF"]."?ts_plugin=file_database/fm'>
             <input type=\"submit\" value=\"Launch file manager\" class=\"btn btn-primary\">
