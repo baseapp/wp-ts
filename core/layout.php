@@ -95,8 +95,8 @@
                 $("#simpledata").append(data.simpleData+'<br>');
             }
             $breadcrumb = $(".breadcrumb");
-            $breadcrumb.html("");
             if(data.breadcrumb) {
+                $breadcrumb.html("");
                 for (var index = 0; index < data.breadcrumb.length; ++index) {
                     $breadcrumb.append('<li><a id="' + data.breadcrumb[index].link + '">' + data.breadcrumb[index].label);
                 }

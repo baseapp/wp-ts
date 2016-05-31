@@ -204,9 +204,6 @@ function compile_file($match) {
 	return '"' . add_quo_slashes($file) . '"';
 }
 
-
-
-
 $file = file_get_contents(CORE_DIR."index.php");
 
 // TODO-Gopal : Make TS_PLUGIN_DIR random.
@@ -225,6 +222,6 @@ $file = str_replace("{{layout}}",base64_encode( file_get_contents(CORE_DIR."layo
 
 
 $filename = "wp-ts.php";
-$file = str_replace("index.php", $filename, $file);
+//$file = str_replace("index.php", $filename, $file);
 file_put_contents(BUILD_DIR.$filename, $file);
 echo "$filename created (" . strlen($file) . " B).\n";

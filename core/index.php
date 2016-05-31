@@ -7,14 +7,18 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
 define('WP_TS',true);
 
+define('TS_ABSURL',$_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']))."/";
+
 $absdir = dirname(__FILE__);
 $absdir = str_replace('\\','/',$absdir);
 define('TS_ABSPATH', $absdir. '/');
 if(is_file(TS_ABSPATH.'wp_ts_debug')){
     // Local Debug
     define('TS_REMOTE_URL', 'http://127.0.0.1/wp-ts/');
+    define('TS_DEBUG',true);
 } else {
     define('TS_REMOTE_URL', 'https://raw.githubusercontent.com/baseapp/wp-ts/master/');
+    define('TS_DEBUG',false);
 }
 
 define('TS_WPINC', 'wp-includes/');
@@ -107,17 +111,17 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
         // wordpress include
         if (function_exists('afterWordPress') && defined('INCLUDE_WORDPRESS')) {
-            ob_start(null, 0, PHP_OUTPUT_HANDLER_CLEANABLE);
-            declare(ticks = 1);
+            //ob_start(null, 0, PHP_OUTPUT_HANDLER_CLEANABLE);
+            //declare(ticks = 1);
             /*register_tick_function(function(){
                 $fp = fopen('/work/backnew.txt', 'a');
                 fwrite($fp, debug_backtrace()[2]['file'] . "\n");
                 fclose($fp);
             });*/
-            register_tick_function(array($p3Profiler, 'ts_tick_handler'));
+            //register_tick_function(array($p3Profiler, 'ts_tick_handler'));
             require TS_ABSPATH . 'index.php';
             //ob_end_clean();
-            ob_clean();
+            //ob_clean();
             afterWordPress();
             //http_response_code(200);
         }
@@ -126,7 +130,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
         $_POST['backlink'] = $_POST['link'];
         dispatch('/login');
     }
-
 
 } elseif (isset($_GET['ts_plugin'])) {
 
