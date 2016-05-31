@@ -39,7 +39,6 @@ require "include/auth.inc.php";
 require "include/klein.inc.php";
 require "include/functions.php";
 require "include/TsError.php";
-require "include/db.inc.php";
 require "include/JsonOutput.php";
 require "include/class.http.php";
 
@@ -83,8 +82,11 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
             } else {
 
             }
-            $db = new DB($db_details['user'], $db_details['pass'], $db_details['name'], $db_details['host']);
-            $db->set_prefix($db_details['prefix']);
+            /*$db = new DB($db_details['user'], $db_details['pass'], $db_details['name'], $db_details['host']);
+            $db->set_prefix($db_details['prefix']);*/
+            $db = new stdClass();
+            $db->info = $db_details;
+            $db->link = mysqli_connect($db_details['host'],$db_details['user'],$db_details['pass'],$db_details['name']);
             return $db;
         });
     });

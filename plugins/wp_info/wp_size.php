@@ -16,7 +16,7 @@
 
 respond('POST','/wp_info/wp_size', 'wp_info_wp_size');
 
-function wp_info_wp_size(TsRequest $request, TsResponse $response)
+function wp_info_wp_size(TsRequest $request, TsResponse $response,TsApp $app)
 {
     $size = getDirectorySize(realpath(TS_ABSPATH));
 
@@ -28,8 +28,19 @@ function wp_info_wp_size(TsRequest $request, TsResponse $response)
         $disk_space = sprintf('%0.2f GB', $disk_space/$gb);
     else
         $disk_space = sprintf('%0.2f MB', $disk_space/$mb);
-    $out = "WordPress installation size : ".sprintf('%0.2f MB <br>', ($size['size'] / (1024*1024)));
+
+    $query   = sprintf('SELECT table_schema, Round(Sum(data_length + index_length) / 1024 / 1024, 1) "size" FROM   information_schema.tables WHERE table_schema = "'. $app->db->info['name'].'" GROUP  BY table_schema;');
+
+    $result = $app->db->link->query($query);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    $out  = "WordPress installation size : ".sprintf('%0.2f MB <br>', ($size['size'] / (1024*1024)));
+    $out .= "DataBase Size : ".sprintf('%0.2f MB <br />', $row['size'] );
+
     $out .= "<br>Free Space on disk : $disk_space";
+
+
+
     $response->data->simpleData = $out;
     $response->sendDataJson();
 }

@@ -766,16 +766,16 @@ class Http
             
             // Get the target contents
             $content = curl_exec($ch);
-            $contentArray = explode("\r\n\r\n", $content);
+            $contentArray = explode("\r\n\r\n", $content,2);
             
             // Get the request info 
             $status  = curl_getinfo($ch);
             
             // Store the contents
-            $this->result = $contentArray[count($contentArray) - 1]; 
+            $this->result = $contentArray[1];
 
             // Parse the headers
-            $this->_parseHeaders($contentArray[count($contentArray) - 2]);
+            $this->_parseHeaders($contentArray[0]);
                         
             // Store the error (is any)
             $this->_setError(curl_error($ch));
@@ -938,7 +938,7 @@ class Http
     {
         // Break up the headers
         $headers = explode("\r\n", $responseHeader);
-        
+
         // Clear the header array
         $this->_clearHeaders();
         

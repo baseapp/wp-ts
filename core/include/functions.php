@@ -93,7 +93,7 @@ function home (TsRequest $request, TsResponse $response)
     $response->sendDataJson();
 }
 
-function downloadPlugin($path, $name = false)
+function downloadPlugin($path, $name = false) {
 
     if(!$name) {
         $name = str_replace(TS_PLUGIN_DIR,"",$path);
@@ -111,7 +111,11 @@ function downloadPlugin($path, $name = false)
     if(!$http->error) {
         file_put_contents($path, $http->result);
     } else {
-        echo $http->error;
+        echo $http->result;
+        echo "\n------------";
+        echo "\nError : ".$http->error. "[".$http->status."]";
+        echo "\nSource : ".$source;
+        die();
     }
 }
 
