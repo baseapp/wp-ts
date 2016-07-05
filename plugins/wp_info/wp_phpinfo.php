@@ -1,12 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Vikas
- * Date: 18/5/16
- * Time: 4:15 PM
- */
-
-/**
  * Meta Info
  * FILE_NAME: wp_phpinfo.php
  * LABEL: Show PHP Info

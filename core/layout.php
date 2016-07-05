@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container" style="margin-top:30px">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-12" style="float:none; margin: 0 auto;">
         <div class="panel panel-default">
             <div class="panel-heading"><span class="panel-title"><strong id="title">Welcome to WordPress TroubleShooter</strong></span>
                     <span class="pull-right" id="search-box">
@@ -126,12 +126,55 @@
             }
             if(data.table){
                 formBody.append('<table id="dataTable" class="display" style="font-size: 12px;"></table>');
-                $('#dataTable').DataTable( {
+
+                tableOrder = [[0,"asc"]]
+
+                if(data.hasOwnProperty("tableOrder")){
+                    tableOrder = data.tableOrder;
+                }
+
+                if(data.hasOwnProperty('tableFormats')) {
+                    for( var i=0;i<data.tableFormats.length;i++) {
+
+                        switch(data.tableFormats[i].type) {
+                            case 'date':
+                                data.tableColumns[i]['render'] = renderDate;
+                            break;
+                            case 'size':
+                                data.tableColumns[i]['render'] = renderSize;
+                            break;
+                        }
+                    }
+
+                }
+                DT = $('#dataTable').DataTable( {
                     data: data.tableData,
-                    columns: data.tableColumns
+                    columns: data.tableColumns,
+                    order: tableOrder
                 } );
             }
+        }
 
+        function renderSize(bytes) {
+            si = true;
+            var thresh = si ? 1000 : 1024;
+            if(Math.abs(bytes) < thresh) {
+                return bytes + ' B';
+            }
+            var units = si
+                ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
+                : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+            var u = -1;
+            do {
+                bytes /= thresh;
+                ++u;
+            } while(Math.abs(bytes) >= thresh && u < units.length - 1);
+            return bytes.toFixed(1)+' '+units[u];
+        }
+
+        function renderDate(data){
+            var date = new Date(data*1000);
+            return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         }
 
         function printAlert(type, msg){

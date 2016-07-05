@@ -21,11 +21,9 @@ if(isset($_REQUEST['file']) && strlen($_REQUEST['file']) > 0) {
 	$_REQUEST['file'] = TS_ABSPATH;
 }
 
-
-
 /**/
 
-if(!$_COOKIE['_sfm_xsrf'])
+if(!isset($_COOKIE['_sfm_xsrf']) || !$_COOKIE['_sfm_xsrf'])
 	setcookie('_sfm_xsrf',bin2hex(openssl_random_pseudo_bytes(16)));
 if($_POST) {
 	if($_COOKIE['_sfm_xsrf'] !== $_POST['xsrf'] || !$_POST['xsrf'])

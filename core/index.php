@@ -12,10 +12,14 @@ define('TS_ABSURL',$_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].di
 $absdir = dirname(__FILE__);
 $absdir = str_replace('\\','/',$absdir);
 define('TS_ABSPATH', $absdir. '/');
+
 if(is_file(TS_ABSPATH.'wp_ts_debug')){
     // Local Debug
     define('TS_REMOTE_URL', 'http://127.0.0.1/wp-ts/');
     define('TS_DEBUG',true);
+    ini_set('display_errors',true);
+    error_reporting(E_ALL);
+
 } else {
     define('TS_REMOTE_URL', 'https://raw.githubusercontent.com/baseapp/wp-ts/master/');
     define('TS_DEBUG',false);
@@ -25,7 +29,7 @@ define('TS_WPINC', 'wp-includes/');
 
 $dir = sha1(PASSWORD + TS_WPINC);
 
-define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-content/uploads/ts-tmp/' . $dir . '/');
+define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-content/uploads/wp-ts/' . $dir . '/');
 
 if (!is_dir(TS_PLUGIN_DIR))
     mkdir(TS_PLUGIN_DIR, 0777, true);
@@ -49,8 +53,9 @@ require "include/class.http.php";
 
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' && isset($_POST['link'])) {
 
-    if (!file_exists(TS_PLUGIN_DIR . 'plugins.json'))
-        downloadPlugin(TS_PLUGIN_DIR.'plugins.json');
+    if (!file_exists(TS_PLUGIN_DIR . 'plugins.json') || TS_DEBUG) {
+        downloadPlugin(TS_PLUGIN_DIR . 'plugins.json');
+    }
     $options_file = file_get_contents(TS_PLUGIN_DIR . 'plugins.json');
 
     global $options;
@@ -96,12 +101,14 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
     });
 
     foreach ($options as $level_name => $level) {
-        foreach ($level['plugins'] as $file_name => $file) {
-            if (in_array($_POST['link'], $file['links_all'])) {
-                if (!file_exists(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php')) {
-                    downloadPlugin(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php');
+        if(isset($level['plugins'])) {
+            foreach ($level['plugins'] as $file_name => $file) {
+                if (in_array($_POST['link'], $file['links_all'])) {
+                    if (!file_exists(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php') || TS_DEBUG) {
+                        downloadPlugin(TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php');
+                    }
+                    require TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php';
                 }
-                require TS_PLUGIN_DIR . $level_name . '/' . $file_name . '.php';
             }
         }
     }
@@ -111,7 +118,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
         // wordpress include
         if (function_exists('afterWordPress') && defined('INCLUDE_WORDPRESS')) {
-            //ob_start(null, 0, PHP_OUTPUT_HANDLER_CLEANABLE);
+            ob_start(null, 0, PHP_OUTPUT_HANDLER_CLEANABLE);
             //declare(ticks = 1);
             /*register_tick_function(function(){
                 $fp = fopen('/work/backnew.txt', 'a');
@@ -120,8 +127,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
             });*/
             //register_tick_function(array($p3Profiler, 'ts_tick_handler'));
             require TS_ABSPATH . 'index.php';
-            //ob_end_clean();
-            //ob_clean();
+            ob_end_clean();
+            ob_clean();
             afterWordPress();
             //http_response_code(200);
         }
@@ -134,7 +141,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 } elseif (isset($_GET['ts_plugin'])) {
 
     if (Auth::isLoggedIn()) {
-        if (!file_exists(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php')) {
+        if (!file_exists(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php') || TS_DEBUG) {
             downloadPlugin(TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php', $_GET['ts_plugin'].".php");
         }
         require TS_PLUGIN_DIR . $_GET['ts_plugin'] . '.php';
