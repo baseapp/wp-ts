@@ -153,6 +153,9 @@
                     order: tableOrder
                 } );
             }
+            if(data.redirect) {
+                window.location = data.redirect;
+            }
         }
 
         function renderSize(bytes) {

@@ -100,7 +100,7 @@ function downloadPlugin($path, $name = false) {
     }
 
     if(!is_dir(dirname($path))) {
-        mkdir(dirname($path),777,true);
+        mkdir(dirname($path),755,true);
     }
 
     $source = TS_REMOTE_URL."plugins/".$name;

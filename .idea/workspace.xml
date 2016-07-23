@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f5b9efe0-5e78-410d-9a59-c9c8d192e957" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/migration/migration_backup.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/migration/migration_fetch.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/include/class.http.php" afterPath="$PROJECT_DIR$/core/include/class.http.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/include/functions.php" afterPath="$PROJECT_DIR$/core/include/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/migration/info.json" afterPath="$PROJECT_DIR$/plugins/migration/info.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/layout.php" afterPath="$PROJECT_DIR$/core/layout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/plugins.json" afterPath="$PROJECT_DIR$/plugins/plugins.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/wp-ts.php" afterPath="$PROJECT_DIR$/build/wp-ts.php" />
+    </list>
+    <ignored path="wp-ts.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="wp-ts" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="migration_backup.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/migration/migration_backup.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-26.153847">
+              <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+              <folding>
+                <element signature="e#6#152#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="migrate.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugins/migration/assets/migrate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.69964665">
+              <caret line="277" column="16" selection-start-line="277" selection-start-column="16" selection-end-line="277" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="standard_1.php" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_1.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.576923">
+              <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/file_database/adminer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1469170548544" expanded="true" signature="54498:54508" placeholder="{...}" />
+                <marker date="1469170548544" expanded="true" signature="61217:61229" placeholder="INSERT INTO ..." />
+                <marker date="1469170548544" expanded="true" signature="64985:65024" placeholder="INSERT INTO ..." />
+                <marker date="1469170548544" expanded="true" signature="65092:65147" placeholder="INSERT INTO ..." />
+                <marker date="1469170548544" expanded="true" signature="66054:66105" placeholder="SELECT SCHEM..SCHEMATA..." />
+                <marker date="1469170548544" expanded="true" signature="66896:67008" placeholder="SELECT TABLE..TABLES..." />
+                <marker date="1469170548544" expanded="true" signature="67247:67370" placeholder="SELECT TABLE..TABLES..." />
+                <marker date="1469170548544" expanded="true" signature="71726:71753" placeholder="ALTER TABLE ..." />
+                <marker date="1469170548544" expanded="true" signature="72021:72033" placeholder="ALTER TABLE ..." />
+                <marker date="1469170548544" expanded="true" signature="72269:72280" placeholder="DROP TABLE $..." />
+                <marker date="1469170548544" expanded="true" signature="72758:72770" placeholder="INSERT INTO ..." />
+                <marker date="1469170548544" expanded="true" signature="72773:72787" placeholder="SELECT * FRO..." />
+                <marker date="1469170548544" expanded="true" signature="74725:74831" placeholder="SELECT ROUTI..ROUTINES..." />
+                <marker date="1469170548544" expanded="true" signature="79311:79330" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="90344:90424" placeholder="INSERT INTO ..." />
+                <marker date="1469170548544" expanded="true" signature="93844:93858" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="95554:95792" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="98739:98863" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="98758:98863" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="110243:110257" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="125087:125104" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="129967:129992" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="131146:131224" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="131341:131358" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="131500:131518" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="132287:132304" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="133023:133120" placeholder="SELECT User,..mysql...." />
+                <marker date="1469170548544" expanded="true" signature="146053:146058" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="146931:147007" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="147619:147655" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="152260:152337" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="153671:153676" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="156131:156208" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="156836:156848" placeholder="ALTER TABLE ..." />
+                <marker date="1469170548544" expanded="true" signature="157691:157696" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="157992:158033" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="158279:158291" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="158641:158677" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="159804:159840" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="159941:159977" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="161383:161471" placeholder="SELECT * FRO..EVENTS..." />
+                <marker date="1469170548544" expanded="true" signature="161530:161603" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="161554:161603" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="162356:162392" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="163394:163430" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="163832:163868" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="164842:164883" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="164866:164883" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="165540:165576" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="168724:168808" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="168748:168808" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="170511:170547" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="171049:171166" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="177522:177536" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="184114:184148" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="184255:184459" placeholder="..." />
+                <marker date="1469170548544" expanded="true" signature="184313:184459" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file_manager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/file_database/file_manager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.423077">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/file_database/fm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.038462">
+              <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_manager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/file_database/db_manager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.923077">
+              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.615385">
+              <caret line="45" column="29" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auth.inc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/include/auth.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mysqldump.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/migration/assets/Mysqldump.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+              <folding>
+                <element signature="e#385#399#0#PHP" expanded="true" />
+                <marker date="1469265553557" expanded="true" signature="21865:21950" placeholder="CREATE TABLE..IF..." />
+                <marker date="1469265553557" expanded="true" signature="25926:25959" placeholder="SELECT ${$co..." />
+                <marker date="1469265553557" expanded="true" signature="26501:26687" placeholder="INSERT INTO ..." />
+                <marker date="1469265553557" expanded="true" signature="26826:26887" placeholder="INSERT INTO ..." />
+                <marker date="1469265553557" expanded="true" signature="37000:37053" placeholder="SELECT tbl_n..sqlite_master..." />
+                <marker date="1469265553557" expanded="true" signature="37118:37170" placeholder="SELECT tbl_n..sqlite_master..." />
+                <marker date="1469265553557" expanded="true" signature="37238:37289" placeholder="SELECT name ..sqlite_master..." />
+                <marker date="1469265553557" expanded="true" signature="48753:48786" placeholder="DROP TABLE I..." />
+                <marker date="1469265553557" expanded="true" signature="48980:49013" placeholder="DROP TABLE I..." />
+                <marker date="1469265553557" expanded="true" signature="49045:49088" placeholder="/*!50001 DRO..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../wordpress/wp-ts.php" />
+        <option value="$PROJECT_DIR$/core/include/class.http.php" />
+        <option value="$PROJECT_DIR$/plugins/migration/info.json" />
+        <option value="$PROJECT_DIR$/plugins/migration/migration_fetch.php" />
+        <option value="$PROJECT_DIR$/plugins/migration/migration_restore.php" />
+        <option value="$PROJECT_DIR$/core/include/functions.php" />
+        <option value="$PROJECT_DIR$/core/layout.php" />
+        <option value="$PROJECT_DIR$/plugins/migration/migration_backup.php" />
+        <option value="$PROJECT_DIR$/plugins/migration/assets/migrate.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1172" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="file_database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wp-ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f5b9efe0-5e78-410d-9a59-c9c8d192e957" name="Default" comment="" />
+      <created>1469308775407</created>
+      <option name="number" value="Default" />
+      <updated>1469308775407</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1172" height="1040" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22664359" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../wordpress/wp-ts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65371025">
+          <caret line="2318" column="72" selection-start-line="2318" selection-start-column="72" selection-end-line="2318" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/include/class.http.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.961538">
+          <caret line="896" column="21" selection-start-line="896" selection-start-column="21" selection-end-line="896" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/malware/mal_modified.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#166#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/info.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/file_database/file_log.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#132#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/plugin_theme/enable_disable_plugin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1469170548633" expanded="true" signature="-1:-1" placeholder="SELECT optio..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/performance/plugin_profiler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.423077">
+          <caret line="682" column="12" selection-start-line="682" selection-start-column="12" selection-end-line="682" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/migration_restore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07744875">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/migration_fetch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13553531">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/user/check_email.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3997722">
+          <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/wp-ts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.23971798">
+          <caret line="1738" column="6" selection-start-line="1712" selection-start-column="15" selection-end-line="1712" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/include/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.0">
+          <caret line="114" column="30" selection-start-line="113" selection-start-column="8" selection-end-line="117" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="49.03846">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/layout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.461538">
+          <caret line="156" column="47" selection-start-line="156" selection-start-column="47" selection-end-line="156" selection-end-column="47" />
+          <folding>
+            <marker date="1469312955119" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/file_database/db_manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.923077">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/file_database/adminer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1469170548544" expanded="true" signature="54498:54508" placeholder="{...}" />
+            <marker date="1469170548544" expanded="true" signature="61217:61229" placeholder="INSERT INTO ..." />
+            <marker date="1469170548544" expanded="true" signature="64985:65024" placeholder="INSERT INTO ..." />
+            <marker date="1469170548544" expanded="true" signature="65092:65147" placeholder="INSERT INTO ..." />
+            <marker date="1469170548544" expanded="true" signature="66054:66105" placeholder="SELECT SCHEM..SCHEMATA..." />
+            <marker date="1469170548544" expanded="true" signature="66896:67008" placeholder="SELECT TABLE..TABLES..." />
+            <marker date="1469170548544" expanded="true" signature="67247:67370" placeholder="SELECT TABLE..TABLES..." />
+            <marker date="1469170548544" expanded="true" signature="71726:71753" placeholder="ALTER TABLE ..." />
+            <marker date="1469170548544" expanded="true" signature="72021:72033" placeholder="ALTER TABLE ..." />
+            <marker date="1469170548544" expanded="true" signature="72269:72280" placeholder="DROP TABLE $..." />
+            <marker date="1469170548544" expanded="true" signature="72758:72770" placeholder="INSERT INTO ..." />
+            <marker date="1469170548544" expanded="true" signature="72773:72787" placeholder="SELECT * FRO..." />
+            <marker date="1469170548544" expanded="true" signature="74725:74831" placeholder="SELECT ROUTI..ROUTINES..." />
+            <marker date="1469170548544" expanded="true" signature="79311:79330" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="90344:90424" placeholder="INSERT INTO ..." />
+            <marker date="1469170548544" expanded="true" signature="93844:93858" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="95554:95792" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="98739:98863" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="98758:98863" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="110243:110257" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="125087:125104" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="129967:129992" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="131146:131224" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="131341:131358" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="131500:131518" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="132287:132304" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="133023:133120" placeholder="SELECT User,..mysql...." />
+            <marker date="1469170548544" expanded="true" signature="146053:146058" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="146931:147007" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="147619:147655" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="152260:152337" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="153671:153676" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="156131:156208" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="156836:156848" placeholder="ALTER TABLE ..." />
+            <marker date="1469170548544" expanded="true" signature="157691:157696" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="157992:158033" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="158279:158291" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="158641:158677" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="159804:159840" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="159941:159977" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="161383:161471" placeholder="SELECT * FRO..EVENTS..." />
+            <marker date="1469170548544" expanded="true" signature="161530:161603" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="161554:161603" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="162356:162392" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="163394:163430" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="163832:163868" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="164842:164883" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="164866:164883" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="165540:165576" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="168724:168808" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="168748:168808" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="170511:170547" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="171049:171166" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="177522:177536" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="184114:184148" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="184255:184459" placeholder="..." />
+            <marker date="1469170548544" expanded="true" signature="184313:184459" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/file_database/file_manager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/file_database/fm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.576923">
+          <caret line="225" column="9" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/migration_backup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.153847">
+          <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+          <folding>
+            <element signature="e#6#152#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.615385">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/include/auth.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/assets/Mysqldump.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding>
+            <element signature="e#385#399#0#PHP" expanded="true" />
+            <marker date="1469265553557" expanded="true" signature="21865:21950" placeholder="CREATE TABLE..IF..." />
+            <marker date="1469265553557" expanded="true" signature="25926:25959" placeholder="SELECT ${$co..." />
+            <marker date="1469265553557" expanded="true" signature="26501:26687" placeholder="INSERT INTO ..." />
+            <marker date="1469265553557" expanded="true" signature="26826:26887" placeholder="INSERT INTO ..." />
+            <marker date="1469265553557" expanded="true" signature="37000:37053" placeholder="SELECT tbl_n..sqlite_master..." />
+            <marker date="1469265553557" expanded="true" signature="37118:37170" placeholder="SELECT tbl_n..sqlite_master..." />
+            <marker date="1469265553557" expanded="true" signature="37238:37289" placeholder="SELECT name ..sqlite_master..." />
+            <marker date="1469265553557" expanded="true" signature="48753:48786" placeholder="DROP TABLE I..." />
+            <marker date="1469265553557" expanded="true" signature="48980:49013" placeholder="DROP TABLE I..." />
+            <marker date="1469265553557" expanded="true" signature="49045:49088" placeholder="/*!50001 DRO..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/migration/assets/migrate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69964665">
+          <caret line="277" column="16" selection-start-line="277" selection-start-column="16" selection-end-line="277" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

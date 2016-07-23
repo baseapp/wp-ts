@@ -686,7 +686,9 @@ class Http
         
         // Pass the requred cookies
         $this->_passCookies();
-        
+
+        $cookieString = false;
+
         // Process cookies, if requested
         if(is_array($this->cookies) && count($this->cookies) > 0)
         {
@@ -889,7 +891,7 @@ class Http
             else
             {
                 // Nope...so lets get the rest of the contents (non-chunked)
-                if ($this->headers['transfer-encoding'] != 'chunked')
+                if ( !isset($this->headers['transfer-encoding']) ||  (isset($this->headers['transfer-encoding']) &&  $this->headers['transfer-encoding'] != 'chunked'))
                 {
                     while (!feof($filePointer))
                     {
