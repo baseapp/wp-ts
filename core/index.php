@@ -29,6 +29,7 @@ define('TS_WPINC', 'wp-includes/');
 
 $dir = sha1(PASSWORD + TS_WPINC);
 
+define('TS_SECRET',$dir);
 define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-content/uploads/wp-ts/' . $dir . '/');
 
 if (!is_dir(TS_PLUGIN_DIR))

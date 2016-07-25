@@ -93,6 +93,21 @@ function home (TsRequest $request, TsResponse $response)
     $response->sendDataJson();
 }
 
+function downloadFile($source,$path = false){
+
+    $http = new Http();
+    $http->execute($source);
+
+    if(!$http->error) {
+        if($path) {
+            file_put_contents($path, $http->result);
+        }
+        return $http->result;
+    } else {
+        return false;
+    }
+}
+
 function downloadPlugin($path, $name = false) {
 
     if(!$name) {

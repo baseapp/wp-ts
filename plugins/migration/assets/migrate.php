@@ -27,10 +27,7 @@ function star($basepath,$source, $destination,$size = 10,$entryNum=0)
         return false;
     }
 
-
-
     $source = str_replace('\\', '/', realpath($source));
-
 
     if (is_dir($source) === true)
     {
@@ -184,7 +181,7 @@ $backup = array('wp-content/');
 $curPath = dirname(__FILE__).'/';
 $curPath = str_replace('\\','/',$curPath);
 
-$wpPath = dirname(dirname(dirname(dirname(dirname($curPath))))).'/';
+$wpPath = dirname(dirname(dirname($curPath))).'/';
 
 $action = isset ($_GET['action'])?$_GET['action']:'default';
 
@@ -215,22 +212,29 @@ switch($action) {
             $dump->start($curPath.'db.sql');
 
             echo 'Done<br />';
-            // goto step to 
+            echo 'Backing Up Files ...';
+            // goto step to
+            $fp = fopen($curPath."backup.txt","w");
+            fwrite($fp,'db.sql,'.filesize($curPath.'db.sql')."\n");
+            fclose($fp);
             echo '<META http-equiv="refresh" content="0;URL=migrate.php?action=backup&step=1&size='.$size.'" timeout="2">';
     
         } else {
             foreach($backup as $path) {
                     star($wpPath,$wpPath.$path,$curPath.'files_'.$step.'.tar',$size,$entryNum);
-            }            
-            
+            }
+
+            $fp = fopen($curPath."backup.txt","a");
+            fwrite($fp,'files_'.$step.'.tar,'.filesize($curPath.'files_'.$step.'.tar')."\n");
+            fclose($fp);
+
             if($_entryNum > 0) {
+                echo 'Backing Up Files Part '.$step;
                 echo '<META http-equiv="refresh" content="0;URL=migrate.php?action=backup&step='.($step+1).'&size='.$size.'&entry='.$_entryNum.'" timeout="2">';
             } else {
-                echo 'Finished';
+                echo 'Backup Finished';
                 // Lets write a Backup report
             }
-            
-            
         }
         
         
@@ -277,11 +281,3 @@ switch($action) {
             printf($path.' : %0.2f MB <br />', ($info['size'] / (1024*1024)) );
         }       
 }
-
-?>
-
-<form>
-    <input type="text" value="10" name="size"></input>
-    <input type="hidden" name="action" value="backup"></input>
-    <input type="submit" value="backup"></input>
-</form>

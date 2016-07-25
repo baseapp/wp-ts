@@ -16,8 +16,10 @@ function migration_migration_backup(TsRequest $request, TsResponse $response)
 
     if (isset($request->backup_path)) {
 
-        if(!is_dir($request->backup_path)) {
-            mkdir($request->backup_path,755,true);
+        $backup_path = TS_ABSPATH.$request->backup_path;
+
+        if(!is_dir($backup_path)) {
+            mkdir($backup_path,755,true);
         }
 
         $mfiles = array('migrate.php','Mysqldump.php','Tar.php');
@@ -28,7 +30,7 @@ function migration_migration_backup(TsRequest $request, TsResponse $response)
             $http->execute($source);
 
             if(!$http->error) {
-                file_put_contents($request->backup_path.'/'.$mfile, $http->result);
+                file_put_contents($backup_path.'/'.$mfile, $http->result);
             } else {
                 echo $http->result;
                 echo "\n------------";
@@ -39,14 +41,15 @@ function migration_migration_backup(TsRequest $request, TsResponse $response)
         }
         // now redirect and start
         $response->data->simpleData = "Starting Backup ... Please Wait...";
-        $response->data->redirect = TS_ABSURL.'/wp-content/uploads/wp-ts/b6589fc6ab0dc82cf12099d1c2d40ab994e8410c/backup/migrate.php';
+        $response->data->redirect = TS_ABSURL.'/'.$request->backup_path.'migrate.php?size='.$request->part_size.'&action=backup';
 
     } else {
         $response->data->simpleData = "Enter path for backup directory.";
         $response->data->form = true;
         $response->data->formData = array(
             array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
-            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text', 'value' => TS_PLUGIN_DIR.'backup'),
+            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text', 'value' => 'backups/'.TS_SECRET.'/'.date('Y-m-d',time()).'/'),
+            array('name'  => 'part_size', 'label' => 'Part Size', 'type'  => 'text','hint'=>'Size of each backup file in MB, dont change unless required.', 'value' => 10 ),
             array('name'  => 'submit', 'type'  => 'submit', 'value' => 'Backup')
         );
         $response->sendDataJson();

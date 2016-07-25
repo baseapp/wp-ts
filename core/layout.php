@@ -118,8 +118,12 @@
                         if(field.label)
                             $formElement.append('<label for="'+field.name+'">'+field.label+'</label>');
                         $formElement.append('<input class="form-control" type="'+field.type+'" name="'+field.name+'" value="'+field.value+'"></div>');
+                        if(field.hint) {
+                            $formElement.append('<p class="help-block">'+field.hint+'</p>')
+                        }
                         $form.append($formElement);
                     }
+
                 }
                 //formBody.append('</form>');
                 formBody.append($form);
