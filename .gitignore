@@ -1,0 +1,5 @@
+nbproject/
+app/data/
+.htaccess
+composer.lock
+.idea
