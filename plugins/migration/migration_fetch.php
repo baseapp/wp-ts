@@ -14,9 +14,44 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
 
     $response->data->title = "Fetch Remote Wordpress Backup";
 
-    if (isset($request->backup_fetch)) {
+    if (isset($request->fetch_url)) {
 
-        // Fetch Database
+        $fetchUrl = $request->fetch_url;
+        $fetchPath = TS_ABSPATH.$request->fetch_path;
+
+        // Starts with 0 to count
+        if(is_file($fetchPath.'backup.txt')) {
+            $backup = file_get_contents($fetchPath . 'backup.txt');
+        } {
+            if(!is_dir($fetchPath)) {
+                mkdir($fetchPath,755,true);
+            }
+            $backup = downloadFile($fetchUrl.'backup.txt',$fetchPath.'backup.txt');
+        }
+
+        $fetchPart = 0;
+        if(isset($request->fetch_part)) {
+            $fetchPart = $request->fetch_part;
+        }
+
+        $files = explode("\n",$backup);
+
+        if(isset($files[$fetchPart])) {
+            list($fetchFile,$size) = explode(",",$files[$fetchPart],2);
+            downloadFile($fetchUrl.$fetchFile,$fetchPath.$fetchFile);
+            $response->data->form = true;
+            $response->data->formData = array(
+                array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
+                array('name'  => 'fetch_url', 'type'  => 'hidden', 'value' => $request->fetch_url),
+                array('name'  => 'fetch_path', 'type'  => 'hidden', 'value' => $request->fetch_path),
+                array('name'  => 'fetch_part', 'type'  => 'hidden', 'value' => $fetchPart + 1)
+            );
+            $response->data->simpleData = "Downloading : ".$fetchUrl.$fetchFile;
+            $response->data->formSubmit = true;
+        } else {
+            // Were done
+            $response->data->simpleData = "Download Complete";
+        }
 
 
     } else if (isset($request->backup_url)) {
@@ -43,8 +78,9 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
             $response->data->form = true;
             $response->data->simpleData = sprintf("Backup Found<br />Files : %d<br />Size : %.2f MB",$totalFiles, $totalSize / (1024*1024) );
             $response->data->formData = array(
-                array('name'  => 'backup_url', 'type'  => 'hidden', 'value' => $request->backup_url),
-                array('name'  => 'backup_fetch', 'type'  => 'hidden', 'value' => $request->backup_path),
+                array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
+                array('name'  => 'fetch_url', 'type'  => 'hidden', 'value' => $request->backup_url),
+                array('name'  => 'fetch_path', 'type'  => 'hidden', 'value' => $request->backup_path),
                 array('name'  => 'submit', 'type'  => 'submit', 'value' => 'Fetch Backup')
             );
             $response->sendDataJson();
@@ -55,10 +91,7 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
 
         }
 
-
-
         // Error getting backup information
-
 
     } else {
         $response->data->simpleData = "Enter path for backup directory.";

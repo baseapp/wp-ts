@@ -108,7 +108,9 @@
                 for (var index = 0; index < data.formData.length; ++index) {
                     var field = data.formData[index];
                     //formBody.append('<div class="form-group">');
-                    if(field.type=="radio")
+                    if(field.type=="hidden"){
+                        $form.append('<input type="'+field.type+'" name="'+field.name+'" value="'+field.value+'">');
+                    } else if(field.type=="radio")
                     {
                         $formElement = $('<div class="radio">');
                         $formElement.append('<label><input type="'+field.type+'" name="'+field.name+'" value="'+field.value+'">'+field.label+'</label>');
@@ -159,6 +161,11 @@
             }
             if(data.redirect) {
                 window.location = data.redirect;
+            }
+
+            if(data.form && data.formSubmit) {
+                var str = $( "form" ).serialize();
+                makerequest(str);
             }
         }
 
