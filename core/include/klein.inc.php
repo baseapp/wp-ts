@@ -538,7 +538,7 @@ class TsResponse extends StdClass
     // Sends a file
     public function file($path, $filename = null, $mimetype = null)
     {
-        $this->discard();
+        $this->discard(true);
         $this->noCache();
         set_time_limit(1200);
         if (null === $filename) {
@@ -571,7 +571,7 @@ class TsResponse extends StdClass
     // Send Form data in json form
     public function sendDataJson()
     {
-        $this->discard(true);
+         $this->discard(true);
         $this->noCache();
         set_time_limit(1200);
         $this->data->breadcrumb = getBreadcrumbs($_POST['link']);

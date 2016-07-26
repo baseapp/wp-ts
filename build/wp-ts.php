@@ -628,7 +628,9 @@ class TsResponse extends StdClass
     // Sends a file
     public function file($path, $filename = null, $mimetype = null)
     {
-        $this->discard();
+      
+            $this->discard(true);
+
         $this->noCache();
         set_time_limit(1200);
         if (null === $filename) {
@@ -646,7 +648,9 @@ class TsResponse extends StdClass
     // Sends an object as json or jsonp by providing the padding prefix
     public function json($object, $jsonp_prefix = null)
     {
-        $this->discard(true);
+
+            $this->discard(true);
+
         $this->noCache();
         set_time_limit(1200);
         $json = json_encode($object);
@@ -661,7 +665,9 @@ class TsResponse extends StdClass
     // Send Form data in json form
     public function sendDataJson()
     {
-        $this->discard(true);
+
+            $this->discard(true);
+
         $this->noCache();
         set_time_limit(1200);
         $this->data->breadcrumb = getBreadcrumbs($_POST['link']);
@@ -2704,8 +2710,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
             } else {
 
             }
-            /*$db = new DB($db_details['user'], $db_details['pass'], $db_details['name'], $db_details['host']);
-            $db->set_prefix($db_details['prefix']);*/
             $db = new stdClass();
             $db->info = $db_details;
             $db->link = mysqli_connect($db_details['host'],$db_details['user'],$db_details['pass'],$db_details['name']);

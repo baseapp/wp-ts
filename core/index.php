@@ -30,10 +30,14 @@ define('TS_WPINC', 'wp-includes/');
 $dir = sha1(PASSWORD + TS_WPINC);
 
 define('TS_SECRET',$dir);
-define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-content/uploads/wp-ts/' . $dir . '/');
+define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-ts/' . $dir . '/');
+define('TS_TEMP_DIR', TS_ABSPATH . 'wp-ts/' . $dir . '/temp/');
 
 if (!is_dir(TS_PLUGIN_DIR))
-    mkdir(TS_PLUGIN_DIR, 0777, true);
+    mkdir(TS_PLUGIN_DIR, 0755, true);
+
+if (!is_dir(TS_TEMP_DIR))
+    mkdir(TS_TEMP_DIR, 0755, true);
 
 session_start();
 $idletime = 3000; //after 300 seconds the user gets logged out
@@ -92,8 +96,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
             } else {
 
             }
-            /*$db = new DB($db_details['user'], $db_details['pass'], $db_details['name'], $db_details['host']);
-            $db->set_prefix($db_details['prefix']);*/
             $db = new stdClass();
             $db->info = $db_details;
             $db->link = mysqli_connect($db_details['host'],$db_details['user'],$db_details['pass'],$db_details['name']);

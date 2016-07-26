@@ -99,7 +99,7 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
         $response->data->formData = array(
             array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
             array('name'  => 'backup_url', 'type'  => 'text','label'=>'Remote Backups url','value'=>''),
-            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text','hint'=>'Backup Will be stored in this directory','value' => 'backups/'.TS_SECRET.'/'.date('Y-m-d',time()).'/'),
+            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text','hint'=>'Backup Will be stored in this directory','value' => 'wp-ts/' . TS_SECRET . '/backups/'.date('Y-m-d',time()).'/'),
             array('name'  => 'submit', 'type'  => 'submit', 'value' => 'Check Backup')
         );
         $response->sendDataJson();
