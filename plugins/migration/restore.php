@@ -17,7 +17,7 @@ function migration_restore(TsRequest $request, TsResponse $response,TsApp $app)
     if (isset($request->backup_path)) {
 
         $backupPath = TS_ABSPATH.$request->backup_path;
-        $backup = file_get_contents($backupPath . 'backup.txt');
+        $backup = file_get_contents($backupPath . 'backup.info');
 
         if($backup) {
 
@@ -113,7 +113,7 @@ function migration_restore(TsRequest $request, TsResponse $response,TsApp $app)
     }
     else if (isset($request->restore_path)) {
         $restorePath = TS_ABSPATH.$request->restore_path;
-        $backup = file_get_contents($restorePath . 'backup.txt');
+        $backup = file_get_contents($restorePath . 'backup.info');
 
         if($backup) {
 

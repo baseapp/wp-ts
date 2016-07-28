@@ -1,20 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: gopal
- * Date: 12/5/16
- * Time: 10:01 AM
- */
-
-/**
  * Meta Info
  * FILE_NAME: check_email.php
  * LABEL: Check Email
  * LINK_MAIN: /user/check_email
  *
  */
-
-
 
 respond('POST', '/user/check_email', 'user_check_email');
 

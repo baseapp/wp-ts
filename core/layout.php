@@ -116,10 +116,18 @@
                         $formElement.append('<label><input type="'+field.type+'" name="'+field.name+'" value="'+field.value+'">'+field.label+'</label>');
                         $form.append($formElement);
                     } else {
-                        $formElement = $('<div class="form-group">');
-                        if(field.label)
+                        $formElement = $('<div class="form-group" '+((field.clipboard)?'style="display:table;"':'')+'>');
+
+                        if(field.label) {
                             $formElement.append('<label for="'+field.name+'">'+field.label+'</label>');
-                        $formElement.append('<input class="form-control" type="'+field.type+'" name="'+field.name+'" value="'+field.value+'"></div>');
+                        }
+                        $formElement.append('<input class="form-control" type="'+field.type+'" name="'+field.name+'" '+((field.clipboard)?'id="copy-input"':'')+' value="'+field.value+'"></div>');
+                        if(field.clipboard) {
+                            $formElement.append('<span class="input-group-btn"><button class="btn btn-default" type="button" id="copy-button" data-toggle="tooltip" data-placement="button" title="Copy to Clipboard">Copy</button></span>');
+
+                            setTimeout(initClipboard,1000);
+
+                        }
                         if(field.hint) {
                             $formElement.append('<p class="help-block">'+field.hint+'</p>')
                         }
@@ -195,6 +203,34 @@
             return '<div class="alert alert-'+type+' alert-dismissible" role="alert">'
                 +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
                 +msg+'</div>';
+        }
+
+        function initClipboard() {
+            $('#copy-button').tooltip();
+
+            $('#copy-button').bind('click', function () {
+                var input = document.querySelector('#copy-input');
+                input.setSelectionRange(0, input.value.length + 1);
+                try {
+                    var success = document.execCommand('copy');
+                    if (success) {
+                        $('#copy-button').trigger('copied', ['Copied!']);
+                    } else {
+                        $('#copy-button').trigger('copied', ['Copy with Ctrl-c']);
+                    }
+                } catch (err) {
+                    $('#copy-button').trigger('copied', ['Copy with Ctrl-c']);
+                }
+            });
+
+            // Handler for updating the tooltip message.
+            $('#copy-button').bind('copied', function (event, message) {
+                $(this).attr('title', message)
+                    .tooltip('fixTitle')
+                    .tooltip('show')
+                    .attr('title', "Copy to Clipboard")
+                    .tooltip('fixTitle');
+            });
         }
 
         function makerequest(formdata){

@@ -1,15 +1,15 @@
 <?php
 /**
  * Meta Info
- * FILE_NAME: migration_fetch.php
+ * FILE_NAME: fetch.php
  * LABEL: Fetch a remote Wordpress Backup for restore
- * LINK_MAIN: /migration/migration_fetch
+ * LINK_MAIN: /migration/fetch
  *
  */
 
-respond('POST', '/migration/migration_fetch', 'migration_migration_fetch');
+respond('POST', '/migration/fetch', 'migration_fetch');
 
-function migration_migration_fetch(TsRequest $request, TsResponse $response)
+function migration_fetch(TsRequest $request, TsResponse $response)
 {
 
     $response->data->title = "Fetch Remote Wordpress Backup";
@@ -20,13 +20,13 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
         $fetchPath = TS_ABSPATH.$request->fetch_path;
 
         // Starts with 0 to count
-        if(is_file($fetchPath.'backup.txt')) {
-            $backup = file_get_contents($fetchPath . 'backup.txt');
+        if(is_file($fetchPath.'backup.info')) {
+            $backup = file_get_contents($fetchPath . 'backup.info');
         } {
             if(!is_dir($fetchPath)) {
                 mkdir($fetchPath,755,true);
             }
-            $backup = downloadFile($fetchUrl.'backup.txt',$fetchPath.'backup.txt');
+            $backup = downloadFile($fetchUrl.'backup.info',$fetchPath.'backup.info');
         }
 
         $fetchPart = 0;
@@ -59,11 +59,11 @@ function migration_migration_fetch(TsRequest $request, TsResponse $response)
         $backup_url = $request->backup_url;
         $backup_path = TS_ABSPATH.$request->backup_path;
 
-        $backup = downloadFile($backup_url.'backup.txt');
+        $backup = downloadFile($backup_url.'backup.info');
 
         $response->data->simpleData = "Checking Backup - ";
 
-        if($backup) {
+        if($backup && strpos($backup,'b.sql,')) {
 
             $totalFiles = 0;
             $totalSize = 0;

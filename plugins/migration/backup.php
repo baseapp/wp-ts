@@ -77,7 +77,6 @@ function star($basepath,$source, $destination,$size = 10,$entryNum=0)
 
                 if($_tarSize > $size*1024*1024) {
 
-                    require_once('Tar.php');
                     $tar = new splitbrain\PHPArchive\Tar();
                     $tar->create($destination);
                     foreach($tarFiles as $tarFile) {
@@ -97,7 +96,6 @@ function star($basepath,$source, $destination,$size = 10,$entryNum=0)
     $_entryNum = -1;
 
     // write using pcl zip
-    require_once('Tar.php');
     $tar = new splitbrain\PHPArchive\Tar();
     $tar->create($destination);
     foreach($tarFiles as $tarFile) {
@@ -208,10 +206,11 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
             $backupStep += 1;
 
         } else {
+            include (TS_TEMP_DIR.'Tar.php');
 
             star(TS_ABSPATH,TS_ABSPATH.'wp-content/',$backupPath.'files_'.$backupStep.'.tar',$request->part_size,$request->part_entry);
 
-            file_put_contents($backupLog,file_get_contents($backupLog).'files_'.$backupStep.'.tar,'.filesize(TS_ABSPATH.'wp-content/',$backupPath.'files_'.$backupStep.'.tar')."\n");
+            file_put_contents($backupLog,file_get_contents($backupLog).'files_'.$backupStep.'.tar,'.filesize($backupPath.'files_'.$backupStep.'.tar')."\n");
 
             $backupStep += 1;
 
@@ -230,7 +229,9 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
             $response->data->simpleData = "Backing up part : ".$backupStep."<br />Please Wait ...";
             $response->data->formSubmit = true;
         } else {
-            $response->data->simpleData = "Backup Completed";
+            $response->data->simpleData = "Backup Completed.<br />Your Backup Url - ";
+            $response->data->form = true;
+            $response->data->formData = array(array('name'  => 'backup_url','type'  => 'text','clipboard'=>true,'value' => TS_ABSURL."/".$request->backup_path));
         }
 
     } else {
@@ -239,7 +240,7 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
         $response->data->formData = array(
             array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
             array('name'  => 'part_entry', 'type'  => 'hidden', 'value' => 0),
-            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text', 'value' => 'wp-ts/' . TS_SECRET . 'backups/'.date('Y-m-d',time()).'/'),
+            array('name'  => 'backup_path', 'label' => 'Backup Path', 'type'  => 'text', 'value' => 'wp-ts/' . TS_SECRET . '/backups/'.date('Y-m-d',time()).'/'),
             array('name'  => 'part_size', 'label' => 'Part Size', 'type'  => 'text','hint'=>'Size of each backup file in MB, dont change unless required.', 'value' => 10 ),
             array('name'  => 'submit', 'type'  => 'submit', 'value' => 'Backup Now')
         );
