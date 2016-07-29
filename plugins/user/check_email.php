@@ -31,22 +31,9 @@ function user_check_email(TsRequest $request, TsResponse $response)
         $response->data->simpleData = "Enter the email address where you want to send the test email.";
         $response->data->form = true;
         $response->data->formData = array(
-            array(
-                'name'  => 'link',
-                'type' => 'hidden',
-                'value' => '/user/check_email'
-            ),
-            array(
-                'name'  => 'email',
-                'type' => 'email',
-                'value' => '',
-                'label' => 'Email'
-            ),
-            array(
-                'name' => 'submit',
-                'type' => 'submit',
-                'value' => 'Test'
-            )
+            array('name'  => 'link','type' => 'hidden','value' => '/user/check_email'),
+            array('name'  => 'email','type' => 'email','value' => '','label' => 'Email'),
+            array('name' => 'submit','type' => 'submit','value' => 'Test')
         );
     }
     $response->sendDataJson();

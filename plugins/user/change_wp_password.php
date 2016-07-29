@@ -7,46 +7,37 @@
  *
  */
 
-
-
 respond('POST', '/user/change_wp_password', 'user_change_wp_password');
 
 /**
  * Change WordPress admin password.
- * If ypu are using any external plugins for hashing the it will not work.
  *
  * @param $request
  * @param $response
  * @param $app
  */
-function user_change_wp_password($request, $response, $app)
+function user_change_wp_password(TsRequest $request, TsResponse $response,TsApp $app)
 {
     if ($request->password) {
-        require TS_ABSPATH.TS_WPINC.'class-phpass.php';
 
-        $wp_hasher = new PasswordHash(8, true);
+        require_once(TS_ABSPATH.'wp-blog-header.php');
+        wp_set_password($request->password, 1 );
 
-        $new_hash = $wp_hasher->HashPassword($request->password);
-//            TODO-Gopal Username Based Password Change
-        $user_id=1;
+        $response->data->simpleData = "Password changed as requested.";
 
-        if ($app->db->update($app->db->users, array('user_pass' => $new_hash, 'user_activation_key' => ''), array('ID' => $user_id))) {
-            $response->flash("WP-Admin Password changed !", "success");
-            home($request, $response);
-        } else {
-            $response->flash("Failed to change WP-Admin password !", "danger");
-            unset($request->password);
-            change_wp_password($request, $response, $app);
-        }
+        // Over ride any status codes by wordpress
+        http_response_code(200);
+
     } else {
         $response->data->title = "Change WP-Admin Password";
         $response->data->simpleData = "Please enter new password for WP-Admin";
         $response->data->form = true;
         $response->data->formData = array(
-            array('name'  => 'link', 'type'  => 'hidden','value' => $_POST['link'] ),
+            array('name'  => 'link', 'type'  => 'hidden','value' => $request->link ),
             array('name'  => 'password', 'label' => 'New WP-Admin Password', 'type'  => 'password', 'value' => ''),
             array('name'  => 'submit', 'type'  => 'submit', 'value' => 'Change Password')
         );
-        $response->sendDataJson();
     }
+
+    $response->sendDataJson();
 }

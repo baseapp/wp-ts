@@ -32,7 +32,7 @@ function user_login_as(TsRequest $request, TsResponse $response, TsApp $app)
 
         // Over ride any status codes by wordpress
         http_response_code(200);
-        
+
     } else {
 
         $response->data->title = "Login as User";
