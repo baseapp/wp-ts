@@ -7,7 +7,9 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_DISPLAY', false);
 define('WP_TS',true);
 
-define('TS_ABSURL',$_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']))."/";
+$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,strpos( $_SERVER["SERVER_PROTOCOL"],'/'))).'://';
+
+define('TS_ABSURL',$protocol. $_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']))."/";
 
 $absdir = dirname(__FILE__);
 $absdir = str_replace('\\','/',$absdir);
@@ -121,19 +123,13 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTE
 
         // wordpress include
         if (function_exists('afterWordPress') && defined('INCLUDE_WORDPRESS')) {
-            ob_start(null, 0, PHP_OUTPUT_HANDLER_CLEANABLE);
-            //declare(ticks = 1);
-            /*register_tick_function(function(){
-                $fp = fopen('/work/backnew.txt', 'a');
-                fwrite($fp, debug_backtrace()[2]['file'] . "\n");
-                fclose($fp);
-            });*/
-            //register_tick_function(array($p3Profiler, 'ts_tick_handler'));
+            ob_start();
             require TS_ABSPATH . 'index.php';
             ob_end_clean();
             ob_clean();
-            afterWordPress();
-            //http_response_code(200);
+            if(function_exists('afterWordpress')) {
+                afterWordPress();
+            }
         }
 
     } else {

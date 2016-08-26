@@ -76,18 +76,18 @@ function home (TsRequest $request, TsResponse $response)
         $response->data->simpleData = $options[$request->sublevel]['label'];
         $options = $options[$request->sublevel]['plugins'];
         array_walk($options, function(&$v, $k){
-            $v = ['type'=> 'radio', 'name'=>'link', 'value'=>$v['link_main'], 'label'=>$v['label']];
+            $v = array('type'=> 'radio', 'name'=>'link', 'value'=>$v['link_main'], 'label'=>$v['label']);
         });
     }else{
         $response->data->title = "Home";
         $response->data->simpleData = "Welcome to <strong>WordPress TroubleShooter</strong>. Select a troubleshoot action. ";
         array_walk($options, function(&$v, $k){
-            $v = ['type'=> 'radio', 'name'=>'link', 'value'=>'/home/'.$k, 'label'=>$v['label']];
+            $v = array('type'=> 'radio', 'name'=>'link', 'value'=>'/home/'.$k, 'label'=>$v['label']);
         });
     }
     $options = array_values($options);
     //$options[] = ['name'  => 'link', 'type'  => 'radio','value' => '/logout', 'label'=>'Logout'];
-    $options[] = ['name'  => 'submit', 'type'  => 'submit','value' => 'Continue'];
+    $options[] = array('name'  => 'submit', 'type'  => 'submit','value' => 'Continue');
     $response->data->form = true;
     $response->data->formData = $options;
     $response->sendDataJson();
@@ -139,9 +139,9 @@ function quick_search(TsRequest $request, TsResponse $response)
     global $options;
     $links=array();
     foreach($options as $name => $details){
-        $links[] = ['link' =>'/home/'.$name, 'label' => $details['label']];
+        $links[] = array('link' =>'/home/'.$name, 'label' => $details['label']);
         foreach($details['plugins'] as $k => $v){
-            $links[] = ['link' =>$v['link_main'], 'label' => $v['label']];
+            $links[] = array('link' =>$v['link_main'], 'label' => $v['label']);
         }
     }
     $outlinks = array();
@@ -163,15 +163,15 @@ function getBreadcrumbs($link)
     $trim_link = trim($link, '/');
     $link_arr = explode('/', $trim_link);
     if ( ! empty($link_arr)) {
-        $list[] = ['link'=>'/home', 'label'=> 'Home'];
+        $list[] = array('link'=>'/home', 'label'=> 'Home');
         foreach($options as $level_name=>$level) {
             if (sizeof($link_arr >=2) && $link_arr[0] !== 'home') {
                 if ($link_arr[0] === $level_name)
-                   $list[] = ['link'=>'/home/'.$level_name, 'label'=> $level['label']];
+                   $list[] = array('link'=>'/home/'.$level_name, 'label'=> $level['label']);
                 if (isset($level['plugins'])) {
                     foreach ($level['plugins'] as $file_name => $file) {
                         if (in_array($link, $file['links_all']) && $link !== $file['link_main']) {
-                            $list[] = ['link' => $file['link_main'], 'label' => $file['label']];
+                            $list[] = array('link' => $file['link_main'], 'label' => $file['label']);
                         }
                     }
                 }

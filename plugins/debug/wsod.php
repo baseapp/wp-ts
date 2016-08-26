@@ -40,12 +40,13 @@ function debug_wsod(TsRequest $request, TsResponse $response)
                 'value' => 'Check Issue'
             )
         );
+        $response->sendDataJson();
     }
-    $response->sendDataJson();
+
 }
 
 function afterWordPress() {
-    echo 'Im Here';
+
 }
 
 
