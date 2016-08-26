@@ -49,6 +49,9 @@ function star($basepath,$source, $destination,$size = 10,$entryNum=0)
             if(strstr($file,'backup') && strstr($file,'.tar.gz'))
                 continue;
 
+            if(strstr($file,'backup') && strstr($file,'.zip'))
+                continue;
+
             // Ignore wp cache
             if(strstr($file,'wp-content/cache/'))
                 continue;
@@ -174,6 +177,12 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
             // Set things up
             if (!is_dir($backupPath)) {
                 mkdir($backupPath, 755, true);
+            }
+
+            if(is_dir($backupPath)) {
+                $response->data->simpleData = "Error creating : ".$backupPath;
+                $response->sendDataJson();
+                return;
             }
 
             downloadFile(TS_REMOTE_URL . 'plugins/migration/assets/Mysqldump.php', TS_TEMP_DIR . 'Mysqldump.php');
