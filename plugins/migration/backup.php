@@ -179,7 +179,7 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
                 mkdir($backupPath, 755, true);
             }
 
-            if(is_dir($backupPath)) {
+            if(!is_dir($backupPath)) {
                 $response->data->simpleData = "Error creating : ".$backupPath;
                 $response->sendDataJson();
                 return;
