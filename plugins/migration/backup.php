@@ -153,7 +153,7 @@ function getDirectorySize($path)
     $total['size'] = $totalsize;
     $total['count'] = $totalcount;
     $total['dircount'] = $dircount;
-    return $total;
+    return $total;s
 }
 
 
@@ -176,7 +176,7 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
         if($backupStep == 0) {
             // Set things up
             if (!is_dir($backupPath)) {
-                mkdir($backupPath, 755, true);
+                mkdir($backupPath, 0777, true);s
             }
 
             if(!is_dir($backupPath)) {
