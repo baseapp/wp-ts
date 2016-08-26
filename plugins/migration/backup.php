@@ -169,30 +169,47 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
         $backupPath = TS_ABSPATH.$request->backup_path;
         $backupLog = TS_ABSPATH.$request->backup_path.'/backup.info';
         $backupStep = 0;
+
+
+
         if(isset($request->backup_step)){
             $backupStep = $request->backup_step;
         }
 
         if($backupStep == 0) {
+
+            debug_log("Starting Backup at path ".$backupPath);
+
             // Set things up
             if (!is_dir($backupPath)) {
-                mkdir($backupPath, 0777, true);
+                mkdir($backupPath, 0755, true);
             }
 
             if(!is_dir($backupPath)) {
-                $response->data->simpleData = "Error creating : ".$backupPath;
+                $response->flash("Error creating : ".$backupPath);
                 $response->sendDataJson();
                 return;
             }
 
+            debug_log("Downloading required files");
+
             downloadFile(TS_REMOTE_URL . 'plugins/migration/assets/Mysqldump.php', TS_TEMP_DIR . 'Mysqldump.php');
             downloadFile(TS_REMOTE_URL . 'plugins/migration/assets/Tar.php', TS_TEMP_DIR . 'Tar.php');
+
+            if(!is_file(TS_TEMP_DIR.'Tar.php') || !is_file(TS_TEMP_DIR.'Mysqldump.php')) {
+                $response->flash("Error downloading required files");
+                $response->sendDataJson();
+                return;
+            }
+
         }
 
         // Dump Mysql
 
         if($backupStep == 0) {
             include (TS_TEMP_DIR.'Mysqldump.php');
+
+            debug_log("Starting Database Backup at path ".$backupPath.'db.sql');
 
             $dumpSettings = array(
                 'no-data' => false,
@@ -212,15 +229,31 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
 
             file_put_contents($backupLog,'db.sql,'.filesize($backupPath.'db.sql')."\n");
 
+            if (!is_file($backupPath.'db.sql')) {
+                $response->flash("Error creating : ".$backupPath.'db.sql');
+                $response->sendDataJson();
+                return;
+            }
+
+            debug_log("Database Backup completed");
             $backupStep += 1;
 
         } else {
             include (TS_TEMP_DIR.'Tar.php');
 
+            debug_log("Starting File Backup at path ".$backupPath.'files_'.$backupStep.'.tar'.' (['.$backupStep.'|'.$request->part_size.'|'.$request->part_entry.'])');
+
             star(TS_ABSPATH,TS_ABSPATH.'wp-content/',$backupPath.'files_'.$backupStep.'.tar',$request->part_size,$request->part_entry);
 
             file_put_contents($backupLog,file_get_contents($backupLog).'files_'.$backupStep.'.tar,'.filesize($backupPath.'files_'.$backupStep.'.tar')."\n");
 
+            if (!is_file($backupPath.'files_'.$backupStep.'.tar')) {
+                $response->flash("Error creating : ".$backupPath.'files_'.$backupStep.'.tar', 'danger');
+                $response->sendDataJson();
+                return;
+            }
+
+            debug_log("File Backup completed : ".filesize($backupPath.'files_'.$backupStep.'.tar'));
             $backupStep += 1;
 
         }
@@ -241,6 +274,7 @@ function migration_backup(TsRequest $request, TsResponse $response, TsApp $app)
             $response->data->simpleData = "Backup Completed.<br />Your Backup Url - ";
             $response->data->form = true;
             $response->data->formData = array(array('name'  => 'backup_url','type'  => 'text','clipboard'=>true,'value' => TS_ABSURL."/".$request->backup_path));
+            debug_log("Complete Backup completed");
         }
 
     } else {

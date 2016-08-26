@@ -115,7 +115,7 @@ function downloadPlugin($path, $name = false) {
     }
 
     if(!is_dir(dirname($path))) {
-        mkdir(dirname($path),755,true);
+        mkdir(dirname($path),0755,true);
     }
 
     $source = TS_REMOTE_URL."plugins/".$name;
@@ -180,6 +180,11 @@ function getBreadcrumbs($link)
         }
     }
     return $list;
+}
+
+function debug_log($message) {
+    error_log(date('Y-m-d H:i:s',time()).' : ',3,TS_LOGS_DIR.'debug.log');
+    error_log($message."\n",3,TS_LOGS_DIR.'debug.log');
 }
 
 function delTree($dir) {

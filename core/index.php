@@ -33,6 +33,7 @@ $dir = sha1(PASSWORD + TS_WPINC);
 
 define('TS_SECRET',$dir);
 define('TS_PLUGIN_DIR', TS_ABSPATH . 'wp-ts/' . $dir . '/');
+define('TS_LOGS_DIR', TS_ABSPATH . 'wp-ts/' . $dir . '/logs/');
 define('TS_TEMP_DIR', TS_ABSPATH . 'wp-ts/' . $dir . '/temp/');
 
 if (!is_dir(TS_PLUGIN_DIR))
@@ -40,6 +41,9 @@ if (!is_dir(TS_PLUGIN_DIR))
 
 if (!is_dir(TS_TEMP_DIR))
     mkdir(TS_TEMP_DIR, 0755, true);
+
+if (!is_dir(TS_LOGS_DIR))
+    mkdir(TS_LOGS_DIR, 0755, true);
 
 session_start();
 $idletime = 3000; //after 300 seconds the user gets logged out
