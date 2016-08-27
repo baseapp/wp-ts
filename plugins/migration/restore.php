@@ -57,7 +57,7 @@ function migration_restore(TsRequest $request, TsResponse $response,TsApp $app)
                         $query .= $line;
                         if( substr(trim($query),-1)==';' ){
                             if( !mysqli_query($app->db->link,$query) ){
-                                $error = 'Error performing query \'<strong>' . $query . '\': ' . mysql_error();
+                                $error = 'Error performing query \'<strong>' . $query . '\': ' . mysqli_error($app->db->link);
                                 file_put_contents($errorFilename, $error."\n");
                                 exit;
                             }
