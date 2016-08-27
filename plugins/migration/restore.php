@@ -122,6 +122,7 @@ function migration_restore(TsRequest $request, TsResponse $response,TsApp $app)
 
             $files = explode("\n",$backup);
             foreach($files as $file) {
+                if(empty(trim($file))) continue;
                 list($bfile,$bsize) = explode(',',$file,2);
                 $totalFiles += 1;
                 $totalSize += $bsize;
