@@ -1210,12 +1210,14 @@ function home (TsRequest $request, TsResponse $response)
 function downloadFile($source,$path = false){
 
     $http = new Http();
-    $http->execute($source);
+
+    if($path) {
+        $http->execute($source, '', '', false, $path);
+    } else {
+        $http->execute($source);
+    }
 
     if(!$http->error) {
-        if($path) {
-            file_put_contents($path, $http->result);
-        }
         return $http->result;
     } else {
         return false;
@@ -1672,7 +1674,7 @@ class Http
      */
     function Http()
     {
-        $this->clear();    
+        $this->clear();
     }
     
     /**
@@ -2046,6 +2048,7 @@ class Http
         return $this->error;
     }
 
+
     /**
      * Execute a HTTP request
      * 
@@ -2057,9 +2060,10 @@ class Http
      * @param string URL of the referrer page (optional)
      * @param string The http method (GET or POST) (optional)
      * @param array Parameter array for GET or POST (optional)
+     * @param string Save Path for file
      * @return string Response body of the target page
      */    
-    function execute($target = '', $referrer = '', $method = '', $data = array())
+    function execute($target = '', $referrer = '', $method = '', $data = array(), $savefile = false)
     {
         // Populate the properties
         $this->target = ($target) ? $target : $this->target;
@@ -2203,20 +2207,37 @@ class Http
             @curl_setopt($ch, CURLOPT_FOLLOWLOCATION, $this->redirect);      // Follow redirects
             curl_setopt($ch, CURLOPT_MAXREDIRS,      $this->maxRedirect);   // Limit redirections to four
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);                 // Return in string
-            
-            // Get the target contents
-            $content = curl_exec($ch);
-            $contentArray = explode("\r\n\r\n", $content,2);
-            
-            // Get the request info 
-            $status  = curl_getinfo($ch);
-            
-            // Store the contents
-            $this->result = $contentArray[1];
 
-            // Parse the headers
-            $this->_parseHeaders($contentArray[0]);
-                        
+            if($savefile) {
+                // Save the target contents
+
+                $out = fopen($savefile,"wb");
+                if ($out == FALSE){
+                    $this->_setError('Failed opening file: ' . $savefile);
+                    return FALSE;
+                }
+
+                curl_setopt($ch, CURLOPT_FILE, $out);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_exec($ch);
+
+                $this->result = true;
+
+            } else {
+                // Get the target contents
+                $content = curl_exec($ch);
+                $contentArray = explode("\r\n\r\n", $content,2);
+
+                // Store the contents
+                $this->result = $contentArray[1];
+
+                // Parse the headers
+                $this->_parseHeaders($contentArray[0]);
+            }
+
+            // Get the request info
+            $status  = curl_getinfo($ch);
+
             // Store the error (is any)
             $this->_setError(curl_error($ch));
             
@@ -2328,12 +2349,25 @@ class Http
             }
             else
             {
+                if($savefile) {
+                    $out = fopen($savefile,"wb");
+                    if ($out == FALSE){
+                        $this->_setError('Failed opening file: ' . $savefile);
+                        return FALSE;
+                    }
+                }
                 // Nope...so lets get the rest of the contents (non-chunked)
                 if ( !isset($this->headers['transfer-encoding']) ||  (isset($this->headers['transfer-encoding']) &&  $this->headers['transfer-encoding'] != 'chunked'))
                 {
                     while (!feof($filePointer))
                     {
-                        $responseContent .= fgets($filePointer, 128);
+                        $retString = fgets($filePointer, 128);
+                        if($savefile) {
+                            fwrite($out,$retString);
+                        } else {
+                            $responseContent .= $retString;
+                        }
+
                     }
                 }
                 else
@@ -2350,13 +2384,24 @@ class Http
                             $readLength = strlen($responseContentChunk);
                         }
 
-                        $responseContent .= $responseContentChunk;
+                        if($savefile) {
+                            fwrite($out,$responseContentChunk);
+                        } else {
+                            $responseContent .= $responseContentChunk;
+                        }
+
                         fgets($filePointer);  
                     }
                 }
-                
-                // Store the target contents
-                $this->result = chop($responseContent);
+
+                if($savefile) {
+                    $this->result = true;
+                } else {
+                    // Store the target contents
+                    $this->result = chop($responseContent);
+                }
+
+
             }
         }
         

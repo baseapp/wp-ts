@@ -19,14 +19,23 @@ function migration_fetch(TsRequest $request, TsResponse $response)
         $fetchUrl = $request->fetch_url;
         $fetchPath = TS_ABSPATH.$request->fetch_path;
 
+        debug_log("Starting Backup Fetch");
+
         // Starts with 0 to count
         if(is_file($fetchPath.'backup.info')) {
             $backup = file_get_contents($fetchPath . 'backup.info');
-        } {
+        } else {
             if(!is_dir($fetchPath)) {
                 mkdir($fetchPath,0755,true);
             }
-            $backup = downloadFile($fetchUrl.'backup.info',$fetchPath.'backup.info');
+            downloadFile($fetchUrl.'backup.info',$fetchPath.'backup.info');
+            $backup = file_get_contents($fetchPath . 'backup.info');
+        }
+
+        if(!is_file($fetchPath.'backup.info')){
+            $response->flash("Error reading : ".$fetchPath.'backup.info', 'danger');
+            $response->sendDataJson();
+            return;
         }
 
         $fetchPart = 0;
@@ -36,9 +45,22 @@ function migration_fetch(TsRequest $request, TsResponse $response)
 
         $files = explode("\n",$backup);
 
-        if(isset($files[$fetchPart])) {
+        if(isset($files[$fetchPart]) && !empty(trim($files[$fetchPart]))) {
             list($fetchFile,$size) = explode(",",$files[$fetchPart],2);
+
+            debug_log("Downloading file : ".$fetchUrl.$fetchFile);
+
             downloadFile($fetchUrl.$fetchFile,$fetchPath.$fetchFile);
+
+            if(!is_file($fetchPath.$fetchFile)){
+                debug_log("Error downloading : ".$fetchUrl.$fetchFile);
+                $response->flash("Error downloading : ".$fetchUrl.$fetchFile, 'danger');
+                $response->sendDataJson();
+                return;
+            } else {
+                debug_log("Download Successful to : ".$fetchPath.$fetchFile."( ".filesize($fetchPath.$fetchFile)." )");
+            }
+
             $response->data->form = true;
             $response->data->formData = array(
                 array('name'  => 'link', 'type'  => 'hidden', 'value' => $request->link),
@@ -50,6 +72,7 @@ function migration_fetch(TsRequest $request, TsResponse $response)
             $response->data->formSubmit = true;
         } else {
             // Were done
+            debug_log("Download Complete");
             $response->data->simpleData = "Download Complete";
         }
 

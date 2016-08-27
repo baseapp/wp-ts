@@ -96,12 +96,14 @@ function home (TsRequest $request, TsResponse $response)
 function downloadFile($source,$path = false){
 
     $http = new Http();
-    $http->execute($source);
+
+    if($path) {
+        $http->execute($source, '', '', false, $path);
+    } else {
+        $http->execute($source);
+    }
 
     if(!$http->error) {
-        if($path) {
-            file_put_contents($path, $http->result);
-        }
         return $http->result;
     } else {
         return false;
