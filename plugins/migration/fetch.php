@@ -24,7 +24,7 @@ function migration_fetch(TsRequest $request, TsResponse $response)
             $backup = file_get_contents($fetchPath . 'backup.info');
         } {
             if(!is_dir($fetchPath)) {
-                mkdir($fetchPath,755,true);
+                mkdir($fetchPath,0755,true);
             }
             $backup = downloadFile($fetchUrl.'backup.info',$fetchPath.'backup.info');
         }
